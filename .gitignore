@@ -1,8 +1,0 @@
-.idea/
-target/
-*.iml
-
-debug.log
-smart-contract/blockchain/debug.log
-smart-contract/blockchain/migrations/debug.log
-*.log
