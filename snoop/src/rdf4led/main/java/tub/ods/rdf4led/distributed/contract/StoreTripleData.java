@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 
 /**
- * <p>Auto generated code.
+ * <p>Auto generated cod`e.
  * <p><strong>Do not modify!</strong>
  * <p>Please use the <a href="https://docs.web3j.io/command_line.html">web3j command line tools</a>,
  * or the org.web3j.codegen.SolidityFunctionWrapperGenerator in the
