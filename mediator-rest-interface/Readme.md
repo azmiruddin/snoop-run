@@ -1,0 +1,1 @@
+This is mediator component to consume hsg paymerkle interface and semantic2019 interface
