@@ -1,4 +1,4 @@
-package id.indrajaya.pch.contract.service;
+package tub.ods.pch.contract.service;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -27,8 +27,8 @@ import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
-import id.indrajaya.pch.contract.model.Contractmerkle;
-import id.indrajaya.pch.contract.model.PayMerkleExtended;
+import tub.ods.pch.contract.model.Contractmerkle;
+import tub.ods.pch.contract.model.PayMerkleExtended;
 
 @Service
 public class ContractmerkleService {

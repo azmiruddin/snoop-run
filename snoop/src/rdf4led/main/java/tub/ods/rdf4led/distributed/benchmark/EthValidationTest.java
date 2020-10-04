@@ -22,8 +22,8 @@ public class EthValidationTest {
 //        String ethereum = "http://192.168.1.250:8545";
         String ethereum = args[1];
 //        String ethereum = System.getenv("ETHHOST");
-//        String contractAddress = System.getenv("CONTRACT");
-//        String fundersAddress = System.getenv("FUNDER");
+        //String contractAddress = System.getenv("CONTRACT");
+        //String fundersAddress = System.getenv("FUNDER");
 
         Web3j web3j = Web3j.build(new HttpService(ethereum));
 

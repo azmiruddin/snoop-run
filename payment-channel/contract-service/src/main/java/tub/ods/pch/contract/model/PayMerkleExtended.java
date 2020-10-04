@@ -1,4 +1,4 @@
-package id.indrajaya.pch.contract.model;
+package tub.ods.pch.contract.model;
 
 import java.math.BigInteger;
 import java.util.Arrays;

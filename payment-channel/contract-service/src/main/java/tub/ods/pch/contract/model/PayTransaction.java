@@ -1,4 +1,4 @@
-package id.indrajaya.pch.contract.model;
+package tub.ods.pch.contract.model;
 
 public class PayTransaction {
 	private String contract;

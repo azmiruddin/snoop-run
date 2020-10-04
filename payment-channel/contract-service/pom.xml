@@ -10,7 +10,7 @@
 		<relativePath></relativePath>
 	</parent>
 	<artifactId>contract-services</artifactId>
-	<groupId>id.indrajaya.pch</groupId>
+	<groupId>tub.ods.pch</groupId>
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>

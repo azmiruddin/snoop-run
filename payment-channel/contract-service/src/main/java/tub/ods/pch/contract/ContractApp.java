@@ -1,4 +1,4 @@
-package id.indrajaya.pch.contract;
+package tub.ods.pch.contract;
 
 import javax.annotation.PostConstruct;
 
@@ -9,7 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.web3j.protocol.Web3j;
 
-import id.indrajaya.pch.contract.service.ContractService;
+import tub.ods.pch.contract.service.ContractmerkleService;
 
 @SpringBootApplication
 public class ContractApp {
@@ -19,7 +19,7 @@ public class ContractApp {
     @Autowired
     Web3j web3j;
     @Autowired
-    ContractService service;
+    ContractmerkleService service;
     
     public static void main(String[] args) {
         SpringApplication.run(ContractApp.class, args);

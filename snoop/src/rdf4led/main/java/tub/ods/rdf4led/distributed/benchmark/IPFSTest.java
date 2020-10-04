@@ -6,7 +6,6 @@ import tub.ods.rdf4led.distributed.storage.BlockTripleLongBuffer;
 import tub.ods.rdf4led.distributed.storage.block.DistributedBlockEntry;
 import tub.ods.rdf4led.distributed.storage.block.OpenDistributedBlockIndex;
 
-
 /**
  * Created by Anh Le-Tuan
  * Email: anh.letuan@tu-berlin.de

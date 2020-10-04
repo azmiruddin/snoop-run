@@ -25,8 +25,6 @@ public class HttpBufferLayerService {
         this.endpoint = endpoint;
     }
 
-
-
     public DistributedBlockEntry<long[], ?>[] remoteRequest(long[] keyRequest) {
         String endpoint = this.endpoint + "requestBlockEntry/";
         ObjectMapper objectMapper = new ObjectMapper();
