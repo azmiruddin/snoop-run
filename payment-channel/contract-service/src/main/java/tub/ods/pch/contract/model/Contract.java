@@ -1,6 +1,6 @@
 package tub.ods.pch.contract.model;
 
-public class Contractmerkle {
+public class Contract {
     private int startDate;
     private int channelTimeout;
     private String channelRecipient;
@@ -48,7 +48,7 @@ public class Contractmerkle {
         this.roots = roots;
     }
 
-    public Contractmerkle createContract(Contractmerkle newContract) {
+    public Contract createContract(Contract newContract) {
         return null;
     }
 }

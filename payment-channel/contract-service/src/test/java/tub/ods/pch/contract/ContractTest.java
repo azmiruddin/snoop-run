@@ -21,7 +21,7 @@ import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
-import tub.ods.pch.contract.model.PayMerkleExtended;
+import tub.ods.pch.contract.model.MerkleContract;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)

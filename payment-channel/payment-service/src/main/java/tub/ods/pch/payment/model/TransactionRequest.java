@@ -1,4 +1,4 @@
-package id.indrajaya.pch.payment.model;
+package tub.ods.pch.payment.model;
 
 public class TransactionRequest {
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tub.ods.pch.contract.model.Contractmerkle;
+import tub.ods.pch.contract.model.Contract;
 import tub.ods.pch.contract.service.ContractmerkleService;
 
 @RestController
@@ -15,7 +15,7 @@ import tub.ods.pch.contract.service.ContractmerkleService;
 public class ContractController {
 
     @Autowired
-    Contractmerkle service;
+    Contract service;
     
     @GetMapping("/owner")
     public String getOwnerAccount() {
@@ -23,7 +23,7 @@ public class ContractController {
     }
     
     @PostMapping
-    public Contractmerkle createContract(@RequestBody Contractmerkle newContract) throws Exception {
+    public Contract createContract(@RequestBody Contract newContract) throws Exception {
     	return service.createContract(newContract);
     }
     

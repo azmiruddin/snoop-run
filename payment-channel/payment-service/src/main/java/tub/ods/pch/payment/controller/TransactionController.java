@@ -1,4 +1,4 @@
-package id.indrajaya.pch.payment.controller;
+package tub.ods.pch.payment.controller;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -30,7 +30,7 @@ import org.web3j.protocol.core.methods.response.EthGetTransactionReceipt;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
-import id.indrajaya.pch.payment.model.TransactionRequest;
+import tub.ods.pch.payment.model.TransactionRequest;
 
 @RestController
 @RequestMapping("/transaction")

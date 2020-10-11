@@ -27,8 +27,8 @@ import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
-import tub.ods.pch.contract.model.Contractmerkle;
-import tub.ods.pch.contract.model.PayMerkleExtended;
+import tub.ods.pch.contract.model.Contract;
+import tub.ods.pch.contract.model.MerkleContract;
 
 @Service
 public class ContractmerkleService {
@@ -59,13 +59,13 @@ public class ContractmerkleService {
     	return credentials.getAddress();
     }
 
-    public PayMerkleExtended createContract(PayMerkleExtended newContract) throws Exception {
+    public MerkleContract createContract(MerkleContract newContract) throws Exception {
     	String file = WalletUtils.generateLightNewWalletFile(PASSWORD, null);
     	Credentials receiverCredentials = WalletUtils.loadCredentials(PASSWORD, file);
     	LOGGER.info("Credentials created: file={}, address={}", file, credentials.getAddress());
-    	PayMerkleExtended contract = PayMerkleExtended.deploy(web3j, credentials, GAS_PRICE, GAS_LIMIT, receiverCredentials.getAddress(), BigInteger.valueOf(
-                ((Object) newContract))).send();
-    	newContract.setChannelRecipient(receiverCredentials.getAddress());
+    	MerkleContract contract = MerkleContract.deploy(web3j, credentials, GAS_PRICE, GAS_LIMIT, receiverCredentials.getAddress(), BigInteger.valueOf(
+                ((Object)newContract))).send();
+    	newContract.channelRecipient(receiverCredentials.getAddress());
     	newContract.setContractAddress(contract.getContractAddress());
     	contracts.add(contract.getContractAddress());
     	LOGGER.info("New contract deployed: address={}", contract.getContractAddress());

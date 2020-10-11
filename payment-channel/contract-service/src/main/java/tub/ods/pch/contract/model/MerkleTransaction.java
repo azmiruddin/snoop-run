@@ -1,6 +1,6 @@
 package tub.ods.pch.contract.model;
 
-public class PayTransaction {
+public class MerkleTransaction {
 	private String contract;
 	private long _amount;
 

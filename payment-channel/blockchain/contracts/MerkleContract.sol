@@ -1,13 +1,13 @@
-pragma solidity >=0.4.22 <0.6.0;
+pragma solidity ^0.4.22;
 
-contract PayMerkleExtended {
-    address payable public channelSender;
-    address payable public channelRecipient;
+contract MerkleContract {
+    address public channelSender;
+    address  public channelRecipient;
     uint public startDate;
     uint public channelTimeout;
     bytes32 public roots;
 
-    constructor (address payable to, uint _timeout, bytes32 _root) public payable {
+    constructor (address to, uint _timeout, bytes32 _root) public payable {
         require(msg.value>0);
         channelRecipient = to;
         channelSender = msg.sender;
