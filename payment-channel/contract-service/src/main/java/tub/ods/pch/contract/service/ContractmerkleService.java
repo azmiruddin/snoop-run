@@ -65,7 +65,7 @@ public class ContractmerkleService {
     	Credentials receiverCredentials = WalletUtils.loadCredentials(PASSWORD, file);
     	LOGGER.info("Credentials created: file={}, address={}", file, credentials.getAddress());
     	MerkleContract contract = MerkleContract.deploy(web3j, credentials, GAS_PRICE, GAS_LIMIT, receiverCredentials.getAddress(), BigInteger.valueOf(
-                (newContract.verifyMerkle(GAS_LIMIT.toByteArray(), GAS_PRICE.toByteArray(),web3j.et)).send();
+                (newContract.verifyMerkle(GAS_LIMIT.toByteArray(), GAS_PRICE.toByteArray(),web3j.et))).send());
     	newContract.channelRecipient(receiverCredentials.getAddress());
     	newContract.setContractAddress(contract.getContractAddress());
     	contracts.add(contract.getContractAddress());
