@@ -1,11 +1,13 @@
 package tub.ods.pch.contract.model;
 
+import org.web3j.abi.datatypes.generated.Bytes32;
+
 public class Contract {
     private int startDate;
     private int channelTimeout;
     private String channelRecipient;
     private String channelSender;
-    private String roots;
+    private Bytes32 roots;
 
     public int getChannelTimeout() {
         return channelTimeout;
@@ -40,11 +42,11 @@ public class Contract {
 
 
     //it should be converted to string I think
-    public String getRoots() {
+    public Bytes32 getRoots() {
         return roots;
     }
 
-    public void setRoots(String address) {
+    public void setRoots(Bytes32 address) {
         this.roots = roots;
     }
 

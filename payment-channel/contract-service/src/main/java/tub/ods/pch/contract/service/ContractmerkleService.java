@@ -65,7 +65,7 @@ public class ContractmerkleService {
     	Credentials receiverCredentials = WalletUtils.loadCredentials(PASSWORD, file);
     	LOGGER.info("Credentials created: file={}, address={}", file, credentials.getAddress());
     	MerkleContract contract = MerkleContract.deploy(web3j, credentials, GAS_PRICE, GAS_LIMIT, receiverCredentials.getAddress(), BigInteger.valueOf(
-                (newContract.verifyMerkle(GAS_LIMIT.toByteArray(), GAS_PRICE.toByteArray(),web3j.et))).send());
+                (newContract.verifyMerkle(GAS_LIMIT.toByteArray(), GAS_PRICE.toByteArray(),web3j.))).send());
     	newContract.channelRecipient(receiverCredentials.getAddress());
     	newContract.setContractAddress(contract.getContractAddress());
     	contracts.add(contract.getContractAddress());
@@ -79,15 +79,15 @@ public class ContractmerkleService {
 
 	public void processContracts(long transactionAmount) {
 		contracts.forEach(it -> {
-			MerkleContract contract = MerkleContract.load().load(it, web3j, credentials, GAS_PRICE, GAS_LIMIT);
+			MerkleContract contract = MerkleContract.load(it, web3j, credentials, GAS_PRICE, GAS_LIMIT);
 			try {
-				TransactionReceipt tr = contract.sendTrx(BigInteger.valueOf(transactionAmount)).send();
-				LOGGER.info("Transaction receipt: from={}, to={}, gas={}", tr.getFrom(), tr.getTo(), tr.getGasUsed().intValue());
-				LOGGER.info("Get receiver: {}", contract.getReceiverBalance().send().longValue());
-				EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, contract.getContractAddress());
-				web3j.ethLogObservable(filter).subscribe(log -> {
-					LOGGER.info("Log: {}", log.getData());
-				});
+//				TransactionReceipt tr = contract.channelSender().send();
+//				LOGGER.info("Transaction receipt: from={}, to={}, gas={}", tr.getFrom(), tr.getTo(), tr.getGasUsed().intValue());
+//				LOGGER.info("Get receiver: {}", contract.channelRecipient().send().longValue());
+//				EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, contract.getContractAddress());
+//				web3j.ethLogObservable(filter).subscribe(log -> {
+//					LOGGER.info("Log: {}", log.getData());
+//				});
 			} catch (Exception e) {
 				LOGGER.error("Error during contract execution", e);
 			}
