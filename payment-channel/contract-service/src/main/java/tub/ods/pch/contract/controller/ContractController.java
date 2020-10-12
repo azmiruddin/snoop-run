@@ -24,7 +24,7 @@ public class ContractController {
     }
     
     @PostMapping
-    public MerkleContract createContract(@RequestBody Contract newContract) throws Exception {
+    public MerkleContract createContract(@RequestBody MerkleContract newContract) throws Exception {
     	return service.createContract(newContract);
     }
     
