@@ -34,14 +34,26 @@ import tub.ods.pch.contract.model.MerkleContract;
 @Service
 public class ContractmerkleService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ContractmerkleService.class);
-    private static final String PASSWORD = "POCpch101";
+    private static final String PASSWORD = "qwerty";
     private static final BigInteger GAS_PRICE = BigInteger.valueOf(1L);
-    private static final BigInteger GAS_LIMIT = BigInteger.valueOf(500_000L);
+	private static final BigInteger GAS_LIMIT = BigInteger.valueOf(500_000L);
+	private static final BigInteger WEI_VALUE = BigInteger.valueOf(100_000L);
+	private static final byte[] ROOT = hexStringToByteArray("0x000000000000000000000000");
+
+	public static byte[] hexStringToByteArray(String s) {
+		int len = s.length();
+		byte[] data = new byte[len / 2];
+		for (int i = 0; i < len; i += 2) {
+			data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+								 + Character.digit(s.charAt(i+1), 16));
+		}
+		return data;
+	}
 
     @Autowired
     Web3j web3j;
     Credentials credentials;
-    private List<String> contracts = new ArrayList<>();
+	private List<String> contracts = new ArrayList<>();
 
     @PostConstruct
     public void init() throws IOException, CipherException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException{
@@ -55,21 +67,21 @@ public class ContractmerkleService {
     	EthGetBalance balance = web3j.ethGetBalance(credentials.getAddress(), DefaultBlockParameterName.LATEST).send();
     	LOGGER.info("Balance: {}", balance.getBalance().longValue());
     }  
-    
-    public String getOwnerAccount() {
+
+	public String getOwnerAccount() {
     	return credentials.getAddress();
     }
 
     public MerkleContract createContract(MerkleContract newContract) throws Exception {
-    	String file = WalletUtils.generateLightNewWalletFile(PASSWORD, null);
-    	Credentials receiverCredentials = WalletUtils.loadCredentials(PASSWORD, file);
+		String file = WalletUtils.generateLightNewWalletFile(PASSWORD, null);
+    	Credentials admin = WalletUtils.loadCredentials(PASSWORD, file);
     	LOGGER.info("Credentials created: file={}, address={}", file, credentials.getAddress());
-    	MerkleContract contract = MerkleContract.deploy(web3j, credentials, GAS_PRICE, GAS_LIMIT, receiverCredentials.getAddress(), BigInteger.valueOf(
-                (newContract.verifyMerkle(GAS_LIMIT.toByteArray(), GAS_PRICE.toByteArray(),web3j.))).send());
-    	newContract.channelRecipient(receiverCredentials.getAddress());
+		MerkleContract contract = MerkleContract.deploy(web3j, credentials, GAS_PRICE, GAS_LIMIT, WEI_VALUE,
+				admin.getAddress(), newContract.startDate().send());
+    	newContract.channelRecipient(admin.getAddress());
     	newContract.setContractAddress(contract.getContractAddress());
     	contracts.add(contract.getContractAddress());
-    	LOGGER.info("New contract deployed: address={}", contract.getContractAddress());
+    	LOGGER.info("New contract deployed: address={}", contract.getContractAddress());	
     	Optional<TransactionReceipt> tr = contract.getTransactionReceipt();
     	if (tr.isPresent()) {
     		LOGGER.info("Transaction receipt: from={}, to={}, gas={}", tr.get().getFrom(), tr.get().getTo(), tr.get().getGasUsed().intValue());
@@ -81,13 +93,13 @@ public class ContractmerkleService {
 		contracts.forEach(it -> {
 			MerkleContract contract = MerkleContract.load(it, web3j, credentials, GAS_PRICE, GAS_LIMIT);
 			try {
-//				TransactionReceipt tr = contract.channelSender().send();
-//				LOGGER.info("Transaction receipt: from={}, to={}, gas={}", tr.getFrom(), tr.getTo(), tr.getGasUsed().intValue());
-//				LOGGER.info("Get receiver: {}", contract.channelRecipient().send().longValue());
-//				EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, contract.getContractAddress());
-//				web3j.ethLogObservable(filter).subscribe(log -> {
-//					LOGGER.info("Log: {}", log.getData());
-//				});
+				TransactionReceipt tr = contract.AddBalance(null, null).send();
+				LOGGER.info("Transaction receipt: from={}, to={}, gas={}", tr.getFrom(), tr.getTo(), tr.getGasUsed().intValue());
+				LOGGER.info("Verify Merkle: {}", contract.verifyMerkle(null, null, null).send());
+				EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, contract.getContractAddress());
+				web3j.ethLogFlowable(filter).subscribe(log -> {
+					LOGGER.info("Log: {}", log.getData());
+				});
 			} catch (Exception e) {
 				LOGGER.error("Error during contract execution", e);
 			}
