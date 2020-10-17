@@ -9,7 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.web3j.protocol.Web3j;
 
-import tub.ods.pch.contract.service.ContractmerkleService;
+import tub.ods.pch.contract.service.ContractMerkleService;
 
 @SpringBootApplication
 public class ContractApp {
@@ -19,7 +19,7 @@ public class ContractApp {
     @Autowired
     Web3j web3j;
     @Autowired
-    ContractmerkleService service;
+    ContractMerkleService service;
     
     public static void main(String[] args) {
         SpringApplication.run(ContractApp.class, args);

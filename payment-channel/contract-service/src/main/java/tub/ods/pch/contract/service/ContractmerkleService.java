@@ -32,8 +32,8 @@ import tub.ods.pch.contract.model.Contract;
 import tub.ods.pch.contract.model.MerkleContract;
 
 @Service
-public class ContractmerkleService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContractmerkleService.class);
+public class ContractMerkleService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContractMerkleService.class);
     private static final String PASSWORD = "qwerty";
     private static final BigInteger GAS_PRICE = BigInteger.valueOf(1L);
 	private static final BigInteger GAS_LIMIT = BigInteger.valueOf(500_000L);

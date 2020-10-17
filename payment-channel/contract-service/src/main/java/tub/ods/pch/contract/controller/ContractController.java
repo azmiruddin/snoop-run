@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tub.ods.pch.contract.model.Contract;
 import tub.ods.pch.contract.model.MerkleContract;
-import tub.ods.pch.contract.service.ContractmerkleService;
+import tub.ods.pch.contract.service.ContractMerkleService;
 
 @RestController
 @RequestMapping("/contract")
 public class ContractController {
 
     @Autowired
-    ContractmerkleService service;
+    ContractMerkleService service;
     
     @GetMapping("/owner")
     public String getOwnerAccount() {
