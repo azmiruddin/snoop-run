@@ -4,3 +4,6 @@
 /.settings/
 /.pch/
 /UTC--*
+/.metadata/
+/.idea/
+.factorypath
