@@ -40,7 +40,6 @@ public class ContractMerkleService {
     private static final BigInteger GAS_PRICE = BigInteger.valueOf(1L);
 	private static final BigInteger GAS_LIMIT = BigInteger.valueOf(500_000L);
 	private static final BigInteger WEI_VALUE = BigInteger.valueOf(100_000L);
-	private static final byte[] root = "0x000000000000000000000000".getBytes();
 
     @Autowired
     Web3j web3j;
