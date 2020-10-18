@@ -31,7 +31,10 @@ public class ContractApp {
     		if (tx.getTo() != null && tx.getTo().equals(service.getOwnerAccount())) {
     			LOGGER.info("New tx: id={}, block={}, from={}, to={}, value={}", tx.getHash(), tx.getBlockHash(), tx.getFrom(), tx.getTo(), tx.getValue().intValue());
     			service.processContracts(tx.getValue().longValue());
-    		} else {
+    			service.merkleVerification(tx.getBlockNumber().toByteArray(), tx.getNonce().toByteArray(), null);
+    			service.timeout();
+    			service.closeChannel(tx.getValue(), null);
+    		}else {
     			LOGGER.info("Not matched: id={}, to={}", tx.getHash(), tx.getTo());
     		}
     	});

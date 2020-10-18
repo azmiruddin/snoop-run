@@ -11,12 +11,9 @@ import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
-import okhttp3.OkHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.web3j.crypto.CipherException;
@@ -31,10 +28,6 @@ import org.web3j.protocol.core.methods.response.EthCoinbase;
 import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.protocol.core.RemoteCall;
-import org.web3j.protocol.core.RemoteFunctionCall;
-
-import java.nio.charset.StandardCharsets;
 
 import org.web3j.protocol.http.HttpService;
 import tub.ods.pch.contract.model.Contract;
@@ -103,5 +96,28 @@ public class ContractMerkleService {
 				LOGGER.error("Error during contract execution", e);
 			}
 		});
+	}
+
+	public void timeout(){
+		for (String MerkleContract : contracts) {
+			timeout();
+			return;
+		}
+	}
+
+	public void merkleVerification(byte[] roots, byte[] leaf, List<byte[]> proof){
+		contracts.forEach(it->{
+			MerkleContract contract = MerkleContract.load(it, web3j, credentials, null);
+			try{
+				Boolean vm = contract.verifyMerkle(null, null, null).send();
+
+			} catch (Exception e) {
+				LOGGER.error("Error during contract verify execution", e);
+			}
+		});
+	}
+
+	public void closeChannel(BigInteger _amount, List<byte[]> proof){
+    	contracts.clear();
 	}
 }
