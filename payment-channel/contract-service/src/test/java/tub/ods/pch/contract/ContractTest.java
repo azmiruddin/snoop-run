@@ -55,27 +55,27 @@ public class ContractTest {
 	
 	@Test
 	public void testTransactionFeeContract() throws Exception {
-		MerkleContract contract = MerkleContract.deploy(web3j, credentialsFrom, GAS_PRICE, GAS_LIMIT, "0xd7850bd94f189ce38ce5729052926094997de310", FEE).send();
-		EthGetBalance balance = web3j.ethGetBalance(credentialsTo.getAddress(), DefaultBlockParameterName.LATEST).send();
-		EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, contract.getContractAddress());
-    	LOGGER.info("Sending to: account={}, balance={}", "0xd7850bd94f189ce38ce5729052926094997de310", balance.getBalance().longValue());
-    	for (int i=0; i<3; i++) {
-	    	TransactionReceipt tr = contract.sendTrx(AMOUNT).send();
-	    	LOGGER.info("Transaction receipt: from={}, to={}, gas={}", tr.getFrom(), tr.getTo(), tr.getGasUsed().intValue());
-	    	balance = web3j.ethGetBalance(credentialsFrom.getAddress(), DefaultBlockParameterName.LATEST).send();
-	    	LOGGER.info("From balance after: account={}, balance={}", "0xd7850bd94f189ce38ce5729052926094997de310", balance.getBalance().longValue());
-	    	balance = web3j.ethGetBalance(credentialsTo.getAddress(), DefaultBlockParameterName.LATEST).send();
-	    	LOGGER.info("To balance after: account={}, balance={}", "0xd7850bd94f189ce38ce5729052926094997de310", balance.getBalance().longValue());
-	    	LOGGER.info("Contract: account={}, balance={}", "0xd7850bd94f189ce38ce5729052926094997de310", contract.balances(credentialsTo.getAddress()).send().longValue());
-	    	LOGGER.info("Get receiver: {}", contract.getReceiverBalance().send().longValue());
-//	    	LOGGER.info("Contract To: account={}, balance={}", tr.getTo(), contract.balances(tr.getTo()).send().longValue());
-//	    	balance = web3j.ethGetBalance(tr.getTo(), DefaultBlockParameterName.LATEST).send();
-//	    	LOGGER.info("Contract To 2: account={}, balance={}", credentialsTo.getAddress(), balance.getBalance().longValue());
-    	}
-    	
-    	web3j.ethLogObservable(filter).subscribe(log -> {
-    	    LOGGER.info("Log: {}", log.getData());
-    	});
+//		MerkleContract contract = MerkleContract.deploy(web3j, credentialsFrom, GAS_PRICE, GAS_LIMIT, "0xd7850bd94f189ce38ce5729052926094997de310", FEE).send();
+//		EthGetBalance balance = web3j.ethGetBalance(credentialsTo.getAddress(), DefaultBlockParameterName.LATEST).send();
+//		EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, contract.getContractAddress());
+//    	LOGGER.info("Sending to: account={}, balance={}", "0xd7850bd94f189ce38ce5729052926094997de310", balance.getBalance().longValue());
+//    	for (int i=0; i<3; i++) {
+//	    	TransactionReceipt tr = contract.sendTrx(AMOUNT).send();
+//	    	LOGGER.info("Transaction receipt: from={}, to={}, gas={}", tr.getFrom(), tr.getTo(), tr.getGasUsed().intValue());
+//	    	balance = web3j.ethGetBalance(credentialsFrom.getAddress(), DefaultBlockParameterName.LATEST).send();
+//	    	LOGGER.info("From balance after: account={}, balance={}", "0xd7850bd94f189ce38ce5729052926094997de310", balance.getBalance().longValue());
+//	    	balance = web3j.ethGetBalance(credentialsTo.getAddress(), DefaultBlockParameterName.LATEST).send();
+//	    	LOGGER.info("To balance after: account={}, balance={}", "0xd7850bd94f189ce38ce5729052926094997de310", balance.getBalance().longValue());
+//	    	LOGGER.info("Contract: account={}, balance={}", "0xd7850bd94f189ce38ce5729052926094997de310", contract.balances(credentialsTo.getAddress()).send().longValue());
+//	    	LOGGER.info("Get receiver: {}", contract.getReceiverBalance().send().longValue());
+////	    	LOGGER.info("Contract To: account={}, balance={}", tr.getTo(), contract.balances(tr.getTo()).send().longValue());
+////	    	balance = web3j.ethGetBalance(tr.getTo(), DefaultBlockParameterName.LATEST).send();
+////	    	LOGGER.info("Contract To 2: account={}, balance={}", credentialsTo.getAddress(), balance.getBalance().longValue());
+//    	}
+//
+//    	web3j.ethLogObservable(filter).subscribe(log -> {
+//    	    LOGGER.info("Log: {}", log.getData());
+//    	});
     	Thread.sleep(2000);
 	}
 	

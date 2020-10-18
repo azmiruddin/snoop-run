@@ -11,10 +11,14 @@ import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
+import okhttp3.OkHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
@@ -27,7 +31,12 @@ import org.web3j.protocol.core.methods.response.EthCoinbase;
 import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
+import org.web3j.protocol.core.RemoteCall;
+import org.web3j.protocol.core.RemoteFunctionCall;
 
+import java.nio.charset.StandardCharsets;
+
+import org.web3j.protocol.http.HttpService;
 import tub.ods.pch.contract.model.Contract;
 import tub.ods.pch.contract.model.MerkleContract;
 
@@ -38,22 +47,12 @@ public class ContractMerkleService {
     private static final BigInteger GAS_PRICE = BigInteger.valueOf(1L);
 	private static final BigInteger GAS_LIMIT = BigInteger.valueOf(500_000L);
 	private static final BigInteger WEI_VALUE = BigInteger.valueOf(100_000L);
-	private static final byte[] ROOT = hexStringToByteArray("0x000000000000000000000000");
-
-	public static byte[] hexStringToByteArray(String s) {
-		int len = s.length();
-		byte[] data = new byte[len / 2];
-		for (int i = 0; i < len; i += 2) {
-			data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
-								 + Character.digit(s.charAt(i+1), 16));
-		}
-		return data;
-	}
+	private static final byte[] root = "0x000000000000000000000000".getBytes();
 
     @Autowired
     Web3j web3j;
     Credentials credentials;
-	private List<String> contracts = new ArrayList<>();
+	private final List<String> contracts = new ArrayList<>();
 
     @PostConstruct
     public void init() throws IOException, CipherException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException{
@@ -77,11 +76,11 @@ public class ContractMerkleService {
     	Credentials admin = WalletUtils.loadCredentials(PASSWORD, file);
     	LOGGER.info("Credentials created: file={}, address={}", file, credentials.getAddress());
 		MerkleContract contract = MerkleContract.deploy(web3j, credentials, GAS_PRICE, GAS_LIMIT, WEI_VALUE,
-				admin.getAddress(), newContract.startDate().send());
-    	newContract.channelRecipient(admin.getAddress());
+				newContract.getContractAddress(), newContract.requestCurrentGasPrice(), root).send();
+		newContract.channelRecipient(admin.getAddress());
     	newContract.setContractAddress(contract.getContractAddress());
     	contracts.add(contract.getContractAddress());
-    	LOGGER.info("New contract deployed: address={}", contract.getContractAddress());	
+    	LOGGER.info("New contract deployed: address={}", contract.getContractAddress());
     	Optional<TransactionReceipt> tr = contract.getTransactionReceipt();
     	if (tr.isPresent()) {
     		LOGGER.info("Transaction receipt: from={}, to={}, gas={}", tr.get().getFrom(), tr.get().getTo(), tr.get().getGasUsed().intValue());
