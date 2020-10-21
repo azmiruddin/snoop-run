@@ -32,6 +32,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
 import tub.ods.pch.contract.model.Contract;
 import tub.ods.pch.contract.model.MerkleContract;
+import tub.ods.pch.channel.
 
 @Service
 public class ContractMerkleService {

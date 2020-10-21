@@ -28,13 +28,10 @@ import java.math.BigInteger;
  */
 public class BlockEntryValidationService implements ValidationService<long[]> {
 
-
     private Web3j web3j;
     public String myAddress;
     private StoreTripleData smartContract;
     private Credentials credentials;
-
-
 
     public BlockEntryValidationService(Web3j web3j, String smartContractAddress, String fundingAddress) {
         this.web3j = web3j;
@@ -45,8 +42,6 @@ public class BlockEntryValidationService implements ValidationService<long[]> {
             e.printStackTrace();
         }
     }
-
-
 
     private void init(String contractAddress, String fundingAdress) throws IOException, CipherException {
 

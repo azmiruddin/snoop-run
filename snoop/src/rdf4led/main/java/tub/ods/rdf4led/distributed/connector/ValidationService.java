@@ -4,8 +4,6 @@ import tub.ods.rdf4led.distributed.storage.block.DistributedBlockEntry;
 import tub.ods.rdf4led.distributed.storage.block.OpenDistributedBlockIndex;
 import tub.ods.rdf4led.distributed.storage.block.PrivateDistributedBlockIndex;
 
-imp
-
 
 /**
  * Created by Anh Le-Tuan
@@ -25,5 +23,5 @@ public interface ValidationService<R> {
 
     public DistributedBlockEntry<R, OpenDistributedBlockIndex>[] validate(DistributedBlockEntry<R, PrivateDistributedBlockIndex>[] blockEntries);
 
-    public MerkleValidationService<R, >()
+    public MerkleValidationService<R, >();
 }
