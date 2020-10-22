@@ -32,7 +32,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
 import tub.ods.pch.contract.model.Contract;
 import tub.ods.pch.contract.model.MerkleContract;
-import tub.ods.pch.channel.
+import tub.ods.pch.channel.Main;
 
 @Service
 public class ContractMerkleService {
@@ -98,26 +98,5 @@ public class ContractMerkleService {
 		});
 	}
 
-	public void timeout(){
-		for (String MerkleContract : contracts) {
-			timeout();
-			return;
-		}
-	}
-
-	public void merkleVerification(byte[] roots, byte[] leaf, List<byte[]> proof){
-		contracts.forEach(it->{
-			MerkleContract contract = MerkleContract.load(it, web3j, credentials, null);
-			try{
-				Boolean vm = contract.verifyMerkle(null, null, null).send();
-
-			} catch (Exception e) {
-				LOGGER.error("Error during contract verify execution", e);
-			}
-		});
-	}
-
-	public void closeChannel(BigInteger _amount, List<byte[]> proof){
-    	contracts.clear();
-	}
+	public voi
 }
