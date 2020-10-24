@@ -32,7 +32,7 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
 import tub.ods.pch.contract.model.Contract;
 import tub.ods.pch.contract.model.MerkleContract;
-import tub.ods.pch.channel.Main;
+import tub.ods.pch.channel.ChannelServer;
 
 @Service
 public class ContractMerkleService {
@@ -41,6 +41,7 @@ public class ContractMerkleService {
     private static final BigInteger GAS_PRICE = BigInteger.valueOf(1L);
 	private static final BigInteger GAS_LIMIT = BigInteger.valueOf(500_000L);
 	private static final BigInteger WEI_VALUE = BigInteger.valueOf(100_000L);
+	private static final byte[] root = null;
 
     @Autowired
     Web3j web3j;
@@ -98,5 +99,4 @@ public class ContractMerkleService {
 		});
 	}
 
-	public voi
 }
