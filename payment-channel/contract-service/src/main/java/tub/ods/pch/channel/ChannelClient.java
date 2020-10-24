@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ChannelClient {
-    private final String myName = "PayChainClient|||";
+    private final String myName = "ChannelClient";
     private int SERVER_PORT = 0;
     private String SERVER_IP = "127.0.0.1";
     

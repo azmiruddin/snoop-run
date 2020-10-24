@@ -15,24 +15,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.web3j.crypto.CipherException;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
-import org.web3j.protocol.core.DefaultBlockParameter;
 import org.web3j.protocol.core.DefaultBlockParameterName;
-import org.web3j.protocol.core.methods.request.EthFilter;
 import org.web3j.protocol.core.methods.request.Transaction;
 import org.web3j.protocol.core.methods.response.EthCoinbase;
 import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
-import org.web3j.protocol.http.HttpService;
-import tub.ods.pch.contract.model.Contract;
 import tub.ods.pch.contract.model.MerkleContract;
-import tub.ods.pch.channel.ChannelServer;
 
 @Service
 public class ContractMerkleService {
@@ -81,22 +75,4 @@ public class ContractMerkleService {
     	}
     	return newContract;
     }
-
-	public void processContracts(long transactionAmount) {
-		contracts.forEach(it -> {
-			MerkleContract contract = MerkleContract.load(it, web3j, credentials, GAS_PRICE, GAS_LIMIT);
-			try {
-				TransactionReceipt tr = contract.AddBalance(null, null).send();
-				LOGGER.info("Transaction receipt: from={}, to={}, gas={}", tr.getFrom(), tr.getTo(), tr.getGasUsed().intValue());
-				LOGGER.info("Verify Merkle: {}", contract.verifyMerkle(null, null, null).send());
-				EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, contract.getContractAddress());
-				web3j.ethLogFlowable(filter).subscribe(log -> {
-					LOGGER.info("Log: {}", log.getData());
-				});
-			} catch (Exception e) {
-				LOGGER.error("Error during contract execution", e);
-			}
-		});
-	}
-
 }

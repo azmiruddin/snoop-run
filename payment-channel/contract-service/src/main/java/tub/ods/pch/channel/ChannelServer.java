@@ -23,7 +23,7 @@ import tub.ods.pch.channel.controller.Transaction;
 public class ChannelServer implements Runnable {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ChannelServer.class);
-    private final String myName = "PayChainServer|||";
+    private final String myName = "ChannelServer";
     public int SOCKET_PORT = 8545;
     GenesisBlock genesisBlock;
     

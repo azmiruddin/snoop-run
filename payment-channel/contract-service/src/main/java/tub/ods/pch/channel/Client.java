@@ -19,14 +19,6 @@ public class Client {
     // should bigger than the file to be downloaded
 
 
-
-
-
-
-
-
-
-
     public void downloadPDF() throws IOException, JSONException {
         int bytesRead;
         int current = 0;
