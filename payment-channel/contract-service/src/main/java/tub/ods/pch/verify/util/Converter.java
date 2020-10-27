@@ -1,4 +1,4 @@
-package tub.ods.pch.channel.util;
+package tub.ods.pch.verify.util;
 
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -11,8 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import tub.ods.pch.channel.controller.Transaction;
-import tub.ods.pch.channel.controller.TransactionBlock;
+import tub.ods.pch.verify.controller.Transaction;
+import tub.ods.pch.verify.controller.TransactionBlock;
 
 public class Converter {
 

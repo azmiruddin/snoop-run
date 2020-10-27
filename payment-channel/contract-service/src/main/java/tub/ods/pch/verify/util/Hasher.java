@@ -1,4 +1,4 @@
-package tub.ods.pch.channel.util;
+package tub.ods.pch.verify.util;
 
 import org.json.JSONObject;
 

@@ -1,4 +1,4 @@
-package tub.ods.pch.channel.controller;
+package tub.ods.pch.verify.controller;
 
 public class TransactionInput {
 

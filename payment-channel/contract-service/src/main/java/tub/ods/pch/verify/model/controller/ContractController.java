@@ -1,4 +1,4 @@
-package tub.ods.pch.channel.model.controller;
+package tub.ods.pch.verify.model.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

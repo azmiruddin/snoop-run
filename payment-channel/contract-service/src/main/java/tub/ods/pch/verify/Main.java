@@ -1,15 +1,15 @@
-package tub.ods.pch.channel;
+package tub.ods.pch.verify;
 
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tub.ods.pch.channel.controller.TransactionBlock;
-import tub.ods.pch.channel.controller.GenesisBlock;
-import tub.ods.pch.channel.controller.Transaction;
-import tub.ods.pch.channel.controller.Wallet;
-import tub.ods.pch.channel.util.Converter;
+import tub.ods.pch.verify.controller.TransactionBlock;
+import tub.ods.pch.verify.controller.GenesisBlock;
+import tub.ods.pch.verify.controller.Transaction;
+import tub.ods.pch.verify.controller.Wallet;
+import tub.ods.pch.verify.util.Converter;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package tub.ods.pch.channel.controller;
+package tub.ods.pch.verify.controller;
 
 import java.security.KeyPair;
 import java.security.PrivateKey;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import tub.ods.pch.channel.util.Hasher;
+import tub.ods.pch.verify.util.Hasher;
 
 public  class Wallet {
     private PrivateKey privateKey;

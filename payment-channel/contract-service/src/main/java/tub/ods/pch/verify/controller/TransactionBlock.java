@@ -1,4 +1,4 @@
-package tub.ods.pch.channel.controller;
+package tub.ods.pch.verify.controller;
 
 
 import java.io.UnsupportedEncodingException;
@@ -7,8 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tub.ods.pch.channel.util.Hasher;
-import tub.ods.pch.contract.service.ContractMerkleService;
+import tub.ods.pch.verify.util.Hasher;
 
 public class TransactionBlock{
 

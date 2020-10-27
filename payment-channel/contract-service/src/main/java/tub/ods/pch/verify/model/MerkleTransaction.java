@@ -1,4 +1,4 @@
-package tub.ods.pch.channel.model;
+package tub.ods.pch.verify.model;
 
 public class MerkleTransaction {
 	private String contract;

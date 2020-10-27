@@ -1,4 +1,4 @@
-package tub.ods.pch.channel;
+package tub.ods.pch.verify;
 
 import java.io.*;
 import java.net.ServerSocket;

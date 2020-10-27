@@ -1,4 +1,4 @@
-package tub.ods.pch.channel.controller;
+package tub.ods.pch.verify.controller;
 
 
 import java.io.UnsupportedEncodingException;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tub.ods.pch.channel.util.Hasher;
+import tub.ods.pch.verify.util.Hasher;
 
 /**
  * @author Azmiruddin

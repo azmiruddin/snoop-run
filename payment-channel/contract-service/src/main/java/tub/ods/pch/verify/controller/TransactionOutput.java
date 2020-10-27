@@ -1,10 +1,10 @@
-package tub.ods.pch.channel.controller;
+package tub.ods.pch.verify.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 
-import tub.ods.pch.channel.util.Hasher;
+import tub.ods.pch.verify.util.Hasher;
 
 public class TransactionOutput {
 
