@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.web3j.protocol.Web3j;
 
 import tub.ods.pch.contract.service.ContractMerkleService;
-import tub.ods.pch.channel.Main;
+import tub.ods.pch.verify.Main;
 
 @SpringBootApplication
 public class ContractApp {
