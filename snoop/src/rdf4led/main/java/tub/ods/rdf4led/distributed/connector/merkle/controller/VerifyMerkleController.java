@@ -30,7 +30,7 @@ import org.web3j.protocol.core.methods.response.EthGetTransactionReceipt;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
-import package tub.ods.rdf4led.distributed.connector.merkle.model.VerifyMerkleRequest;
+import tub.ods.rdf4led.distributed.connector.merkle.model.VerifyMerkleRequest;
 
 @RestController
 @RequestMapping("/transaction")

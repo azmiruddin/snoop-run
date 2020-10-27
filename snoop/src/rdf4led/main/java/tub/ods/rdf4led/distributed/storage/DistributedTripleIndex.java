@@ -287,4 +287,8 @@ public class DistributedTripleIndex { //extends LayerIndexAbstract<long[], Distr
 
     }
 
+    public void setValidationService(ValidationService<long[]> validationService) {
+        this.validationService = validationService;
+
+    }
 }
